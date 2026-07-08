@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume ATS Analyzer</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Resume ATS Analyzer</h1>
+      <p class="subtitle">Upload your resume and get an instant AI-powered ATS breakdown</p>
+      <nav style="text-align:center; margin-bottom:20px;">
+        <a href="/history">History</a> | <a href="/compare">Compare Resumes</a> | <a href="/logout">Logout</a>
+      </nav>
+    </header>
+
+    <div id="dropZone" class="drop-zone">
+      <p id="dropText">Drag & drop your PDF here, or click to browse</p>
+      <input type="file" id="resumeFile" accept=".pdf" hidden />
+      <button id="browseBtn" type="button">Choose File</button>
+      <p id="fileName" class="file-name"></p>
+    </div>
+
+    <div class="jd-box">
+      <label for="jdText">Optional: Paste a Job Description to match against</label>
+      <textarea id="jdText" placeholder="Paste job description here..."></textarea>
+    </div>
+
+    <button id="analyzeBtn" class="analyze-btn" disabled>Analyze Resume</button>
+    <button id="matchJdBtn" class="analyze-btn" disabled>Match Against Job Description</button>
+
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p>Analyzing your resume...</p>
+    </div>
+
+    <div id="result" class="hidden">
+      <div class="score-card">
+        <div class="gauge" id="gauge">
+          <span id="scoreText">0</span>
+        </div>
+        <p class="score-label">ATS Score out of 100</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>✔ Strengths</h3>
+          <ul id="strengths"></ul>
+        </div>
+        <div class="card">
+          <h3>⚠ Weaknesses</h3>
+          <ul id="weaknesses"></ul>
+        </div>
+        <div class="card">
+          <h3>🔍 Missing Keywords</h3>
+          <div id="missingKeywords" class="tag-list"></div>
+        </div>
+        <div class="card">
+          <h3>💡 Suggestions</h3>
+          <ol id="suggestions"></ol>
+        </div>
+        <div class="card">
+          <h3>🎯 Suitable Roles</h3>
+          <div id="suitableRoles" class="tag-list"></div>
+        </div>
+        <div class="card verdict-card">
+          <h3>📋 Final Verdict</h3>
+          <p id="verdict"></p>
+        </div>
+      </div>
+
+      <button id="downloadBtn" class="download-btn">Download Report (PDF)</button>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

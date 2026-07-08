@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head><title>Compare Resumes</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+  <div class="container">
+    <h1>Compare Two Resumes</h1>
+    <a href="/">← Back</a>
+    <input type="file" id="file1" accept=".pdf"> Resume 1<br><br>
+    <input type="file" id="file2" accept=".pdf"> Resume 2<br><br>
+    <button id="compareBtn">Compare</button>
+    <div id="results" class="card-grid"></div>
+  </div>
+  <script>
+    document.getElementById("compareBtn").addEventListener("click", async () => {
+      const f1 = document.getElementById("file1").files[0];
+      const f2 = document.getElementById("file2").files[0];
+      if (!f1 || !f2) return alert("Choose both files");
+
+      const formData = new FormData();
+      formData.append("file1", f1);
+      formData.append("file2", f2);
+
+      const res = await fetch("/compare", { method: "POST", body: formData });
+      const data = await res.json();
+
+      document.getElementById("results").innerHTML = `
+        <div class="card"><h3>${data.resume1.filename}</h3><p>Score: ${data.resume1.ats_score}</p></div>
+        <div class="card"><h3>${data.resume2.filename}</h3><p>Score: ${data.resume2.ats_score}</p></div>
+      `;
+    });
+  </script>
+</body></html>

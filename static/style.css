@@ -1,0 +1,241 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f1117;
+  color: #e6e6e6;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container { max-width: 720px; width: 100%; }
+
+header { text-align: center; margin-bottom: 30px; }
+header h1 { margin-bottom: 6px; }
+.subtitle { color: #9ca3af; margin: 0; }
+
+nav a {
+  color: #4f8cff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+nav a:hover { text-decoration: underline; }
+
+.drop-zone {
+  border: 2px dashed #3a3d4a;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.drop-zone.dragover {
+  border-color: #4f8cff;
+  background: #171a24;
+}
+
+.drop-zone button {
+  margin-top: 14px;
+  background: #4f8cff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.drop-zone button:hover { background: #366fe0; }
+
+.file-name { margin-top: 10px; color: #9ca3af; font-size: 0.9em; }
+
+.jd-box {
+  margin-top: 16px;
+}
+
+.jd-box label {
+  display: block;
+  margin-bottom: 6px;
+  color: #9ca3af;
+  font-size: 0.9em;
+}
+
+.jd-box textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #3a3d4a;
+  background: #1a1d27;
+  color: white;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.analyze-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.analyze-btn:disabled { background: #2a2d3a; cursor: not-allowed; color: #6b7280; }
+.analyze-btn:not(:disabled):hover { background: #16a34a; }
+
+.hidden { display: none; }
+
+#loading { text-align: center; margin-top: 30px; }
+
+.spinner {
+  width: 36px; height: 36px;
+  border: 4px solid #2a2d3a;
+  border-top: 4px solid #4f8cff;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.score-card {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.gauge {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(#2a2d3a 0deg, #2a2d3a 360deg);
+  position: relative;
+}
+
+.gauge::before {
+  content: "";
+  position: absolute;
+  width: 108px;
+  height: 108px;
+  background: #0f1117;
+  border-radius: 50%;
+}
+
+#scoreText {
+  position: relative;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.score-label { color: #9ca3af; margin-top: 10px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.card {
+  background: #1a1d27;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.card h3 { margin-top: 0; font-size: 1em; }
+.card ul, .card ol { padding-left: 20px; margin: 8px 0 0; }
+.card li { margin: 4px 0; }
+
+.verdict-card { grid-column: 1 / -1; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+.tag {
+  background: #2a2d3a;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85em;
+}
+
+.download-btn {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background: #4f8cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.download-btn:hover { background: #366fe0; }
+
+.history-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.history-list .card a {
+  color: #4f8cff;
+  text-decoration: none;
+}
+
+.history-list .card a:hover { text-decoration: underline; }
+
+.auth-container {
+  max-width: 360px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.auth-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #3a3d4a;
+  background: #1a1d27;
+  color: white;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  background: #4f8cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.auth-container button:hover { background: #366fe0; }
+
+.auth-container p {
+  margin-top: 16px;
+  color: #9ca3af;
+}
+
+.auth-container a {
+  color: #4f8cff;
+  text-decoration: none;
+}
+
+.auth-container a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr; }
+}

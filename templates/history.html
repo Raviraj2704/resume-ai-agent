@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>History</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+  <div class="container">
+    <h1>Your Resume History</h1>
+    <a href="/">← Back to Analyzer</a>
+    <div class="history-list">
+      {% for r in resumes %}
+      <div class="card">
+        <h3>{{ r.filename }}</h3>
+        <p>Score: {{ r.ats_score }}/100</p>
+        <p>{{ r.created_at }}</p>
+        <a href="/report/{{ r.public_id }}" target="_blank">View Report</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body></html>

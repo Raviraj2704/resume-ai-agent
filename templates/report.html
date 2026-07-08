@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><title>Resume Report</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+  <div class="container">
+    <h1>ATS Report: {{ filename }}</h1>
+    <div class="score-card">
+      <h2>{{ analysis.ats_score }}/100</h2>
+    </div>
+    <div class="card"><h3>Strengths</h3><ul>{% for s in analysis.strengths %}<li>{{ s }}</li>{% endfor %}</ul></div>
+    <div class="card"><h3>Weaknesses</h3><ul>{% for w in analysis.weaknesses %}<li>{{ w }}</li>{% endfor %}</ul></div>
+    <div class="card"><h3>Missing Keywords</h3><p>{{ analysis.missing_keywords | join(", ") }}</p></div>
+    <div class="card"><h3>Suggestions</h3><ol>{% for s in analysis.suggestions %}<li>{{ s }}</li>{% endfor %}</ol></div>
+    <div class="card"><h3>Final Verdict</h3><p>{{ analysis.verdict }}</p></div>
+  </div>
+</body></html>
